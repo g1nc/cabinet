@@ -1,6 +1,13 @@
-- current_user.documents.each do |document|
-	%h2= link_to document.title, document
-	%p= time_ago_in_words(document.created_at)
-	%p= truncate(document.content, length: 50)
-
-= link_to 'Create Document', new_document_path
+.wrapper_with_padding
+	#docs.clearfix
+		- unless @documents.blank?
+			- current_user.documents.each do |document|
+				%a{ href: (url_for [document]) }
+					.doc
+						%p.title= document.title
+						%p.date= time_ago_in_words(document.created_at)
+						%p.content= truncate(document.content, length: 50)
+		- else
+			%h2 Create Document!
+			%p Start Creating Document and Organizing your life!
+			= link_to 'Create Document', new_document_path, class: 'buton'

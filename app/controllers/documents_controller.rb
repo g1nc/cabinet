@@ -2,6 +2,7 @@ class DocumentsController < ApplicationController
 	before_action :find_document, only: [:show, :edit, :update, :destroy]
 
 	def index
+		@documents = current_user.documents
 	end
 
 	def show
