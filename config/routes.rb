@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
+  authenticated :user do
+  	root 'documents#index'
+  end
 
   root 'welcom#index'
 
