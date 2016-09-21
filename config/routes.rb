@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   authenticated :user do
-  	root 'documents#index'
+    root 'documents#index', as: :authenticated_root
   end
 
-  root 'welcom#index'
-
   resources :documents
+  root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
