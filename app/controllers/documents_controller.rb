@@ -9,11 +9,11 @@ class DocumentsController < ApplicationController
 	end
 
 	def new
-		@document = Document.new
+		@document = current_user.docs.build
 	end
 
 	def create
-		@document = Document.new(document_params)
+		@document = current_user.docs.build(document_params)
 
 		if @document.save
 			redirect_to @document
