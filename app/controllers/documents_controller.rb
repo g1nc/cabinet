@@ -2,18 +2,17 @@ class DocumentsController < ApplicationController
 	before_action :find_document, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@documents = Document.all.order('created_at DESC')
 	end
 
 	def show
 	end
 
 	def new
-		@document = current_user.docs.build
+		@document = current_user.documents.build
 	end
 
 	def create
-		@document = current_user.docs.build(document_params)
+		@document = current_user.documents.build(document_params)
 
 		if @document.save
 			redirect_to @document
